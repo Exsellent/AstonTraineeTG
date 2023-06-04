@@ -769,7 +769,7 @@ console.log(deepEqual(obj1, obj2)); // false
 
  // 1.1.1. If you replace the string Y with a function, then you need to set a comparison condition specifically for the function
 
-/**the deep comparison function deepEqual is designed to perform a deep comparison between two objects. It checks if both objects are of type 'object' using typeof, and if so, it compares the number of keys in both objects. If the number of keys is different, it returns false immediately, indicating that the objects are not equal.
+/** the deep comparison function deepEqual is designed to perform a deep comparison between two objects. It checks if both objects are of type 'object' using typeof, and if so, it compares the number of keys in both objects. If the number of keys is different, it returns false immediately, indicating that the objects are not equal.
  * Next, it iterates over each key in obj1 using a for...of loop and recursively calls the deepEqual function to compare the corresponding nested objects. If any nested objects are found to be unequal during the recursive comparisonfalse.
  * If all keys and nested objects are found to be equal, the function returns true. For non-object values, 
  * it performs a strict equality comparison using the === operator. the objects obj1 and obj2 have the same structure, with both having the same keys and nested objects.
@@ -921,7 +921,7 @@ console.log(deepEqual(obj1, obj2)); // Output: false
 
 
 // 1.2. JavaScript the second method: Object.entries() is used instead of Object.keys() to get an array of key-value pairs. 
-/**This will avoid repeated access to the properties of objects by keys. JavaScript method using Object.entries(): This implementation is similar to the previous one, but it uses Object.entries() instead of Object.keys() to avoid repeated access to object properties by keys.It provides a more concise way to iterate over the object entries.However, it shares the same limitations as the previous method.**/
+/** This will avoid repeated access to the properties of objects by keys. JavaScript method using Object.entries(): This implementation is similar to the previous one, but it uses Object.entries() instead of Object.keys() to avoid repeated access to object properties by keys.It provides a more concise way to iterate over the object entries.However, it shares the same limitations as the previous method. **/
 
 const deepEqual = (obj1, obj2) => {
     // Check if both objects are of type 'object'
@@ -1001,7 +1001,7 @@ const obj2 = { here: { is: "on", other: "3" }, object: "Y" };
 console.log(deepEqual(obj1, obj2)); // true
 
 // 1.4. React implementation using Lodash's isEqual():
-/*This example demonstrates the usage of Lodash's isEqual() function, which provides a robust and reliable deep comparison of two objects.
+/* This example demonstrates the usage of Lodash's isEqual() function, which provides a robust and reliable deep comparison of two objects.
  *  This library handles complex scenarios and supports various data types. It is a recommended approach for deep object comparison in React applications. */
 
 import React from 'react';
