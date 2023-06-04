@@ -258,7 +258,7 @@ console.log(counter2.count); // 0
  * Provides a cleaner syntax for defining classes and creating objects.
  * Supports inheritance, allowing you to create subclasses that inherit properties and methods from a base class.
  * Encapsulates data and behavior within the class, promoting code organization and reusability.
-Provides a clear separation between the constructor and methods.**/
+ * Provides a clear separation between the constructor and methods.**/
 /** Disadvantages:
  * The use of classes introduces the concept of prototypes, which may be unfamiliar to developers new to JavaScript.
  * The class syntax is not supported in older versions of JavaScript engines, so it may not be usable in all environments without transpiling.
@@ -376,7 +376,8 @@ const counterCopy6 = Object.fromEntries(Object.entries(counter));
 console.log(counterCopy6); // { value: 2023}
 
 
-// 2.7. To compare objects (not deep), you can use the comparison operator (===), which checks the equality of references to objects, or the method Object.is (), which checks the equality of the values of objects, taking into account some features (for example, NaN is equal to itself).
+/** 2.7. To compare objects (not deep), you can use the comparison operator (===), which checks the equality of references to objects, or the method Object.is (), which checks the equality of the values of objects, taking into account some features (for example, NaN is equal to itself). **/
+
 console.log(counter === counterCopy1); // false
 console.log(Object.is(counter, counterCopy1)); // false
 
@@ -445,7 +446,7 @@ console.log(arr); // [1, 2, 3, 4]
 console.log(arrCopy); // [1, 2, 3]
 
 
-// Each of these methods creates a surface copy of the counter object, which means that the properties of the object are copied, but any nested objects or arrays will still be references to the original object.
+/** Each of these methods creates a surface copy of the counter object, which means that the properties of the object are copied, but any nested objects or arrays will still be references to the original object.**/
 
 
 /*********Task 3 – Create the makeCounter function in all the described and possible ways**********/
@@ -542,7 +543,7 @@ const makeCounter = function counter() {
     };
 };
 
-// 3.5. Using a closure: In this approach, make Counter returns an internal function that has access to the count variable due to closure. Every time an internal function is called, it increments count and returns its value.
+/** 3.5. Using a closure: In this approach, make Counter returns an internal function that has access to the count variable due to closure. Every time an internal function is called, it increments count and returns its value. */
 
 function makeCounter() {
     let count = 0;
@@ -552,7 +553,7 @@ function makeCounter() {
     };
 }
 
-// 3.6. Using a generator function: makeCounter is a generator function defined with function*. 
+/** 3.6. Using a generator function: makeCounter is a generator function defined with function*. 
 /*The yield statement is used to generate the next value of the counter, and the function can be iteratedfor...of loop or by manually calling the next() method on the generator object.*/
 
 function* makeCounter() {
@@ -563,7 +564,7 @@ function* makeCounter() {
     }
 }
 
-//3.7. Using an object with methods:
+// 3.7. Using an object with methods:
 function makeCounter() {
     let count = 0;
 
@@ -634,7 +635,7 @@ makeCounter()
         console.error('Error:', error);
     });
 
-/** 3.10. Asynchronous Generator Function makeCounter is an asynchronous generator function that continuously generates incremented counts with a delay of 1 second (simulated by delay). The function uses the async function* keywords to declare it as an asynchronous generator function. It uses the yield keyword to yield the counts and pause the execution until the next iteration.**/
+/** 3.10. Asynchronous Generator Function makeCounter is an asynchronous generator function that continuously generates incremented counts with a delay of 1 second (simulated by delay). The function uses the async function keywords to declare it as an asynchronous generator function. It uses the yield keyword to yield the counts and pause the execution until the next iteration.**/
 
 async function delay (ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -726,7 +727,9 @@ console.log(counter()); // Output: 3
 Task 1 –********************************************
 Write a deep comparison function of two objects*****/
 
-/** 1.1. JavaScript the first method: The function recursively compares nested objects and performs a strict equality comparison for non-object values. JavaScript method using recursion and strict equality comparison: The implementation recursively compares nested objects and performs a strict equality comparison for non - object values.This approach can be effective for shallow objects with simple data types.However, it does not handle complex scenarios, such as circular references or objects with prototype chains. **/
+/** 1.1. JavaScript the first method: The function recursively compares nested objects and performs a strict equality comparison for non-object values.
+ *  JavaScript method using recursion and strict equality comparison: The implementation recursively compares nested objects and performs a strict equality comparison for non - object values.
+ * This approach can be effective for shallow objects with simple data types.However, it does not handle complex scenarios, such as circular references or objects with prototype chains. **/
 
 const deepEqual = (obj1, obj2) => {
     // Check if both objects are of type 'object'
@@ -762,8 +765,10 @@ console.log(deepEqual(obj1, obj2)); // false
 
 /**the deep comparison function deepEqual is designed to perform a deep comparison between two objects. It checks if both objects are of type 'object' using typeof, and if so, it compares the number of keys in both objects. If the number of keys is different, it returns false immediately, indicating that the objects are not equal.
  * Next, it iterates over each key in obj1 using a for...of loop and recursively calls the deepEqual function to compare the corresponding nested objects. If any nested objects are found to be unequal during the recursive comparisonfalse.
- * If all keys and nested objects are found to be equal, the function returns true. For non-object values, it performs a strict equality comparison using the === operator.
- * the objects obj1 and obj2 have the same structure, with both having the same keys and nested objects. However, the values assigned to the object properties are functions. When comparing functions using the strict equality operator ===, they will not be considered equal unless they refer to the exact same function object in memory.
+ * If all keys and nested objects are found to be equal, the function returns true. For non-object values, 
+ * it performs a strict equality comparison using the === operator. the objects obj1 and obj2 have the same structure, with both having the same keys and nested objects.
+ * However, the values assigned to the object properties are functions. 
+ * When comparing functions using the strict equality operator ===, they will not be considered equal unless they refer to the exact same function object in memory.
  * In the case of obj1 and obj2, the functions assigned to the object properties are separate function objects, even though their function bodies may be identical. As a result, when the deepEqual function compares these properties using strict equality, it returns false, indicating that the objects are not equal. */
 
 // And in order to get a true result it is necessary to set a condition for comparing functions 
@@ -909,7 +914,6 @@ const obj2 = {
 console.log(deepEqual(obj1, obj2)); // Output: false
 
 
-
 // 1.2. JavaScript the second method: Object.entries() is used instead of Object.keys() to get an array of key-value pairs. 
 /**This will avoid repeated access to the properties of objects by keys. JavaScript method using Object.entries(): This implementation is similar to the previous one, but it uses Object.entries() instead of Object.keys() to avoid repeated access to object properties by keys.It provides a more concise way to iterate over the object entries.However, it shares the same limitations as the previous method.**/
 
@@ -976,7 +980,7 @@ const obj2 = { here: { is: "on", other: "2" }, object: "Y" };
 
 console.log(deepEqual(obj1, obj2)); // false
 
-/** the JSON serialization method to compare objects and get true deepEqual function compares the stringified representations of obj1 and obj2 using stringifiedObj1 === stringifiedObj2. Since the properties and values in both objects are the same, thetrue **/
+/** the JSON serialization method to compare objects and get true deepEqual function compares the stringified representations of obj1 and obj2 using stringifiedObj1 === stringifiedObj2. Since the properties and values in both objects are the same, the true **/
 
 const deepEqual = (obj1, obj2) => {
     const stringifiedObj1 = JSON.stringify(obj1);
