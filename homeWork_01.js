@@ -1172,4 +1172,7 @@ const str = "Hello, World!";
 const reversedStr = reverseStr(str);
 console.log(reversedStr); // Output: "!dlroW ,olleH"
 
-/************************** In the course of doing homework, I wanted to create a synopsis on a variety of methods, so that later I would not waste time searching for a method, and be able to simply choose the right one to use. There are probably too many comments in this homework assignment, but it was important for me to understand the questions posed (the information was collected from a large number of sources) in order to return to this question after a while and quickly remember everything thanks to the written comments. Please don't judge me harshly) ***********************************/
+/************************** In the course of doing homework, 
+ * I wanted to create a synopsis on a variety of methods, so that later 
+ * I would not waste time searching for a method, and be able to simply choose the right one to use. 
+ * There are probably too many comments in this homework assignment, but it was important for me to understand the questions posed (the information was collected from a large number of sources) in order to return to this question after a while and quickly remember everything thanks to the written comments. Please don't judge me harshly) ***********************************/
