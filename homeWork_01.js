@@ -153,7 +153,7 @@ console.log(counter2.count); // 0
 counter2.reset();
 console.log(counter2.count); // 0
 
-// 1.7. creating an object using the new keyword The new keyword is used to create a new object based on the constructor function. Using the new keyword, JavaScript automatically creates a new object, sets the prototype of this object to the prototype property of the constructor function and calls the constructor method on the constructor function, passing any arguments that you provided
+/** 1.7. creating an object using the new keyword The new keyword is used to create a new object based on the constructor function. Using the new keyword, JavaScript automatically creates a new object, sets the prototype of this object to the prototype property of the constructor function and calls the constructor method on the constructor function, passing any arguments that you provided**/
 
 function Counter() {
     let count = 0;
@@ -216,12 +216,13 @@ console.log(counter.getCount()); // Output: 2
 
 // 1.9. Using Object.assign():
 /***Advantages:
-Allows you to create a new object by copying properties and methods from another object.
-Provides a shallow copy of the object, meaning the properties are copied by value rather than reference.
-Allows you to extend or modify the copied object without affecting the original object.
-    Disadvantages:
-It performs a shallow copy, so if the original object contains nested objects or arrays, they will still be shared between the original and copied objects.
-If the original object has non - enumerable properties or methods, they will not be copied. **/
+ * Allows you to create a new object by copying properties and methods from another object.
+ * Provides a shallow copy of the object, meaning the properties are copied by value rather than reference.
+ * Allows you to extend or modify the copied object without affecting the original object.
+ * 
+ *  Disadvantages:
+ * It performs a shallow copy, so if the original object contains nested objects or arrays, they will still be shared between the original and copied objects.
+ * If the original object has non - enumerable properties or methods, they will not be copied. **/
 
 // Creating a counter object using the object literal syntax
 
@@ -257,7 +258,7 @@ console.log(counter2.count); // 0
  * Provides a cleaner syntax for defining classes and creating objects.
  * Supports inheritance, allowing you to create subclasses that inherit properties and methods from a base class.
  * Encapsulates data and behavior within the class, promoting code organization and reusability.
-Provides a clear separation between the constructor and methods.*/
+Provides a clear separation between the constructor and methods.**/
 /** Disadvantages:
  * The use of classes introduces the concept of prototypes, which may be unfamiliar to developers new to JavaScript.
  * The class syntax is not supported in older versions of JavaScript engines, so it may not be usable in all environments without transpiling.
@@ -551,7 +552,8 @@ function makeCounter() {
     };
 }
 
-// 3.6. Using a generator function: makeCounter is a generator function defined with function*. The yield statement is used to generate the next value of the counter, and the function can be iteratedfor...of loop or by manually calling the next() method on the generator object.
+// 3.6. Using a generator function: makeCounter is a generator function defined with function*. 
+/*The yield statement is used to generate the next value of the counter, and the function can be iteratedfor...of loop or by manually calling the next() method on the generator object.*/
 
 function* makeCounter() {
     let count = 0;
@@ -606,7 +608,7 @@ console.log(counter1.increment()); // 1
 console.log(counter2.decrement()); // 0
 console.log(counter2.decrement()); // -1
 
-// 3.9. Asynchronous Function makeCounter is an asynchronous function that performs some asynchronous operationsomeAsyncOperation) and returns an incremented count. The function uses the async keyword to mark it as asynchronous and the await keyword to wait for the completion of the asynchronous operation.
+/** 3.9. Asynchronous Function makeCounter is an asynchronous function that performs some asynchronous operationsomeAsyncOperation) and returns an incremented count. The function uses the async keyword to mark it as asynchronous and the await keyword to wait for the completion of the asynchronous operation.**/
 
 async function performAsyncOperation () {
     // Simulating an asynchronous operation
@@ -632,7 +634,7 @@ makeCounter()
         console.error('Error:', error);
     });
 
-// 3.10. Asynchronous Generator Function makeCounter is an asynchronous generator function that continuously generates incremented counts with a delay of 1 second (simulated by delay). The function uses the async function* keywords to declare it as an asynchronous generator function. It uses the yield keyword to yield the counts and pause the execution until the next iteration.
+/** 3.10. Asynchronous Generator Function makeCounter is an asynchronous generator function that continuously generates incremented counts with a delay of 1 second (simulated by delay). The function uses the async function* keywords to declare it as an asynchronous generator function. It uses the yield keyword to yield the counts and pause the execution until the next iteration.**/
 
 async function delay (ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -724,7 +726,7 @@ console.log(counter()); // Output: 3
 Task 1 –********************************************
 Write a deep comparison function of two objects*****/
 
-// 1.1. JavaScript the first method: The function recursively compares nested objects and performs a strict equality comparison for non-object values. JavaScript method using recursion and strict equality comparison: The implementation recursively compares nested objects and performs a strict equality comparison for non - object values.This approach can be effective for shallow objects with simple data types.However, it does not handle complex scenarios, such as circular references or objects with prototype chains.
+/** 1.1. JavaScript the first method: The function recursively compares nested objects and performs a strict equality comparison for non-object values. JavaScript method using recursion and strict equality comparison: The implementation recursively compares nested objects and performs a strict equality comparison for non - object values.This approach can be effective for shallow objects with simple data types.However, it does not handle complex scenarios, such as circular references or objects with prototype chains. **/
 
 const deepEqual = (obj1, obj2) => {
     // Check if both objects are of type 'object'
@@ -798,7 +800,7 @@ const obj2 = { here: { is: "on", other: "3" }, object: () => "Y" };
 
 console.log(deepEqual(obj1, obj2)); // true
 
-// 1.1.2. if the functions as properties will be different. In this updated version, the deepEqual function compares the functions obj1 and obj2 by comparing their string representations using the toString() method. This approach compares the actual functions rather than their outputs, resulting in the expected behavior.Now, when comparing obj1 and obj2, the function correctly identifies that the functions in the object property are different, and the comparison returns false.
+/** 1.1.2. if the functions as properties will be different. In this updated version, the deepEqual function compares the functions obj1 and obj2 by comparing their string representations using the toString() method. This approach compares the actual functions rather than their outputs, resulting in the expected behavior.Now, when comparing obj1 and obj2, the function correctly identifies that the functions in the object property are different, and the comparison returns false. **/
 
 const deepEqual = (obj1, obj2) => {
     if (typeof obj1 === 'object' && typeof obj2 === 'object') {
@@ -974,7 +976,7 @@ const obj2 = { here: { is: "on", other: "2" }, object: "Y" };
 
 console.log(deepEqual(obj1, obj2)); // false
 
-// the JSON serialization method to compare objects and get true in the case you mentioned.  deepEqual function compares the stringified representations of obj1 and obj2 using stringifiedObj1 === stringifiedObj2. Since the properties and values in both objects are the same, thetrue
+/** the JSON serialization method to compare objects and get true deepEqual function compares the stringified representations of obj1 and obj2 using stringifiedObj1 === stringifiedObj2. Since the properties and values in both objects are the same, thetrue **/
 
 const deepEqual = (obj1, obj2) => {
     const stringifiedObj1 = JSON.stringify(obj1);
@@ -1086,7 +1088,7 @@ export default class ApplicationController extends Controller {
 <p>Is equal? {{eq this.obj1 this.obj2}}</p>
 
 //1.7. Node.js implementation using util.isDeepStrictEqual():
-/**In Node.js, the util.isDeepStrictEqual() method can be used to perform a deep comparison of objects. It compares the objects by value, including their properties and nested objects. It provides a reliable and comprehensive deep comparison. */
+/**In Node.js, the util.isDeepStrictEqual() method can be used to perform a deep comparison of objects. It compares the objects by value, including their properties and nested objects. It provides a reliable and comprehensive deep comparison. **/
 
 const util = require('util');
 
@@ -1100,7 +1102,6 @@ console.log(isEqualByRef); // false
 // Compare by content
 const isEqualByContent = util.isDeepStrictEqual(obj1, obj2);
 console.log(isEqualByContent); // false
-
 
 // 1.8. implementation of the prototype design pattern for classes
 /**This implementation uses a recursive approach to compare nested objects and performs a strict equality comparison for non-object values. It checks if both objects are of type 'object', compares the number of keys in both objects, and then recursively compares each key's values. Finally, it returns true if the objects are deep equal or false otherwise. But need to pay attention that this implementation assumes that the objects being compared do not contain cyclic references. */
@@ -1150,7 +1151,7 @@ const str = "Hello, World!";
 const reversedStr = reverseStr(str);
 console.log(reversedStr); // Output: "!dlroW ,olleH"
 
-// 2.2. Using split, reduceRight, and join: The second method is an alternative to the reverse() method. In which you use the reduceRight() method, which applies a function to each element of the array from right to left and returns a single value.
+/** 2.2. Using split, reduceRight, and join: The second method is an alternative to the reverse() method. In which you use the reduceRight() method, which applies a function to each element of the array from right to left and returns a single value. **/
 
 function reverseStr(str) {
     return str.split('').reduceRight((acc, char) => acc + char, '');
