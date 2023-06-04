@@ -254,14 +254,14 @@ console.log(counter2.count); // 0
 
 // 1.10. Using class syntax (ES6) with inheritance:
 /**Advantages:
-Provides a cleaner syntax for defining classes and creating objects.
-Supports inheritance, allowing you to create subclasses that inherit properties and methods from a base class.
-Encapsulates data and behavior within the class, promoting code organization and reusability.
-Provides a clear separation between the constructor and methods.
-    Disadvantages:
-The use of classes introduces the concept of prototypes, which may be unfamiliar to developers new to JavaScript.
-The class syntax is not supported in older versions of JavaScript engines, so it may not be usable in all environments without transpiling.
-The class syntax can lead to potential pitfalls when dealing with the this context, especially when using methods as callbacks or event handlers. ***/
+ * Provides a cleaner syntax for defining classes and creating objects.
+ * Supports inheritance, allowing you to create subclasses that inherit properties and methods from a base class.
+ * Encapsulates data and behavior within the class, promoting code organization and reusability.
+Provides a clear separation between the constructor and methods.*/
+/** Disadvantages:
+ * The use of classes introduces the concept of prototypes, which may be unfamiliar to developers new to JavaScript.
+ * The class syntax is not supported in older versions of JavaScript engines, so it may not be usable in all environments without transpiling.
+ * The class syntax can lead to potential pitfalls when dealing with the this context, especially when using methods as callbacks or event handlers.*/   
 
 // Shape - base class
 class Shape {
@@ -300,15 +300,15 @@ console.log(rect.y); // 30
 
 // 1.11.  Using a constructor function with a prototype:
 
-/**Advantages:
-Helps avoid code duplication by defining methods in the prototype of the constructor function
+/**Advantages: 
+ * Helps avoid code duplication by defining methods in the prototype of the constructor function
 Provides a way to extend the functionality of objects by adding new methods to the prototype after the constructor function has been defined.
-Allows for efficient memory usage as the methods are stored in a single shared prototype object rather than being duplicated for each instance.
-Disadvantages:
+ * Allows for efficient memory usage as the methods are stored in a single shared prototype object rather than being duplicated for each instance.**/
 
-The syntax for defining methods using the prototype can be less intuitive and less visually appealing compared to using class syntax or object literal syntax.
-Access to instance-specific variables (properties) from prototype methods can be more cumbersome, as the prototype methods do not have direct access to instance variables and require using the this keyword to access them.
-Can lead to potential confusion or errors if the prototype methods are modified dynamically, as the changes will affect all instances of the object. */
+/** Disadvantages: 
+ * The syntax for defining methods using the prototype can be less intuitive and less visually appealing compared to using class syntax or object literal syntax. 
+ * Access to instance-specific variables (properties) from prototype methods can be more cumbersome, as the prototype methods do not have direct access to instance variables and require using the this keyword to access them. 
+ * Can lead to potential confusion or errors if the prototype methods are modified dynamically, as the changes will affect all instances of the object. **/
 function Counter() {
     this.count = 0;
 }
@@ -608,12 +608,17 @@ console.log(counter2.decrement()); // -1
 
 // 3.9. Asynchronous Function makeCounter is an asynchronous function that performs some asynchronous operationsomeAsyncOperation) and returns an incremented count. The function uses the async keyword to mark it as asynchronous and the await keyword to wait for the completion of the asynchronous operation.
 
-async function makeCounter() {
+async function performAsyncOperation () {
+    // Simulating an asynchronous operation
+    return new Promise((resolve) => setTimeout(() => resolve(), 1000));
+}
+
+async function makeCounter () {
     try {
         let count = 0;
-        await someAsyncOperation(); // Simulating an asynchronous operation
+        await performAsyncOperation();
 
-        return count++;
+        return ++count;
     } catch (error) {
         console.error('Error:', error);
     }
@@ -629,7 +634,11 @@ makeCounter()
 
 // 3.10. Asynchronous Generator Function makeCounter is an asynchronous generator function that continuously generates incremented counts with a delay of 1 second (simulated by delay). The function uses the async function* keywords to declare it as an asynchronous generator function. It uses the yield keyword to yield the counts and pause the execution until the next iteration.
 
-async function* makeCounter() {
+async function delay (ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function* makeCounter () {
     try {
         let count = 0;
 
@@ -750,10 +759,10 @@ console.log(deepEqual(obj1, obj2)); // false
  // 1.1.1. If you replace the string Y with a function, then you need to set a comparison condition specifically for the function
 
 /**the deep comparison function deepEqual is designed to perform a deep comparison between two objects. It checks if both objects are of type 'object' using typeof, and if so, it compares the number of keys in both objects. If the number of keys is different, it returns false immediately, indicating that the objects are not equal.
-Next, it iterates over each key in obj1 using a for...of loop and recursively calls the deepEqual function to compare the corresponding nested objects. If any nested objects are found to be unequal during the recursive comparisonfalse.
-If all keys and nested objects are found to be equal, the function returns true. For non-object values, it performs a strict equality comparison using the === operator.
-the objects obj1 and obj2 have the same structure, with both having the same keys and nested objects. However, the values assigned to the object properties are functions. When comparing functions using the strict equality operator ===, they will not be considered equal unless they refer to the exact same function object in memory.
-In the case of obj1 and obj2, the functions assigned to the object properties are separate function objects, even though their function bodies may be identical. As a result, when the deepEqual function compares these properties using strict equality, it returns false, indicating that the objects are not equal. */
+ * Next, it iterates over each key in obj1 using a for...of loop and recursively calls the deepEqual function to compare the corresponding nested objects. If any nested objects are found to be unequal during the recursive comparisonfalse.
+ * If all keys and nested objects are found to be equal, the function returns true. For non-object values, it performs a strict equality comparison using the === operator.
+ * the objects obj1 and obj2 have the same structure, with both having the same keys and nested objects. However, the values assigned to the object properties are functions. When comparing functions using the strict equality operator ===, they will not be considered equal unless they refer to the exact same function object in memory.
+ * In the case of obj1 and obj2, the functions assigned to the object properties are separate function objects, even though their function bodies may be identical. As a result, when the deepEqual function compares these properties using strict equality, it returns false, indicating that the objects are not equal. */
 
 // And in order to get a true result it is necessary to set a condition for comparing functions 
 
@@ -1079,7 +1088,6 @@ export default class ApplicationController extends Controller {
 //1.7. Node.js implementation using util.isDeepStrictEqual():
 /**In Node.js, the util.isDeepStrictEqual() method can be used to perform a deep comparison of objects. It compares the objects by value, including their properties and nested objects. It provides a reliable and comprehensive deep comparison. */
 
-
 const util = require('util');
 
 const obj1 = { here: { is: "on", other: "3" }, object: "Y" };
@@ -1163,7 +1171,8 @@ const str = "Hello, World!";
 const reversedStr = reverseStr(str);
 console.log(reversedStr); // Output: "!dlroW ,olleH"
 
-// 2.4. Using Array.from and reduceRight: The fourth method is a combination of the second and third methods. Which uses Array.from() and reduceRight() instead of split(") and reverse(). This method also works, but it is the most complicated and confusing of all.
+/** 2.4. Using Array.from and reduceRight: The fourth method is a combination of the second and third methods. Which uses Array.from() and reduceRight() instead of split(") and reverse().
+This method also works, but it is the most complicated and confusing of all.**/
 
 function reverseStr(str) {
     return Array.from(str).reduceRight((acc, char) => acc + char, '');
@@ -1173,6 +1182,5 @@ const reversedStr = reverseStr(str);
 console.log(reversedStr); // Output: "!dlroW ,olleH"
 
 /************************** In the course of doing homework, 
- * I wanted to create a synopsis on a variety of methods, so that later 
- * I would not waste time searching for a method, and be able to simply choose the right one to use. 
+ * I wanted to create a synopsis on a variety of methods, so that later I would not waste time searching for a method, and be able to simply choose the right one to use. 
  * There are probably too many comments in this homework assignment, but it was important for me to understand the questions posed (the information was collected from a large number of sources) in order to return to this question after a while and quickly remember everything thanks to the written comments. Please don't judge me harshly) ***********************************/
