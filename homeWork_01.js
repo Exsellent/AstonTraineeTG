@@ -543,7 +543,7 @@ const makeCounter = function counter() {
     };
 };
 
-/** 3.5. Using a closure: In this approach, make Counter returns an internal function that has access to the count variable due to closure. Every time an internal function is called, it increments count and returns its value. */
+/** 3.5. Using a closure: In this approach, make Counter returns an internal function that has access to the count variable due to closure. Every time an internal function is called, it increments count and returns its value. **/
 
 function makeCounter() {
     let count = 0;
@@ -556,13 +556,19 @@ function makeCounter() {
 /** 3.6. Using a generator function: makeCounter is a generator function defined with function*. 
 /*The yield statement is used to generate the next value of the counter, and the function can be iteratedfor...of loop or by manually calling the next() method on the generator object.*/
 
-function* makeCounter() {
+function* makeCounter () {
     let count = 0;
 
     while (true) {
         yield count++;
     }
 }
+
+const counterGenerator = makeCounter();
+
+console.log(counterGenerator.next().value); // Output: 0
+console.log(counterGenerator.next().value); // Output: 1
+console.log(counterGenerator.next().value); // Output: 2
 
 // 3.7. Using an object with methods:
 function makeCounter() {
